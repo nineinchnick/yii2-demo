@@ -1,0 +1,40 @@
+{
+    "name": "nineinchnick/yii2-demo",
+	"type": "project",
+    "description": "Demo App presenting niix and edatatables packages",
+	"homepage": "http://demo2.niix.pl/",
+	"license": "BSD-3-Clause",
+	"repositories": [
+		{
+			"type": "vcs",
+			"url": "https://github.com/nineinchnick/yii2-usr"
+		},
+		{
+			"type": "vcs",
+			"url": "https://github.com/nineinchnick/diceware"
+		}
+	],
+	"require": {
+		"php": ">=5.4.0",
+		"yiisoft/yii2": "*",
+		"yiisoft/yii2-swiftmailer": "*",
+		"yiisoft/yii2-bootstrap": "*",
+		"yiisoft/yii2-debug": "*",
+		"yiisoft/yii2-gii": "*",
+		"nineinchnick/yii2-usr": "*"
+	},
+	"scripts": {
+		"post-create-project-cmd": [
+			"yii\\composer\\Installer::setPermission"
+		]
+	},
+	"extra": {
+		"writable": [
+			"runtime",
+			"web/assets"
+		],
+		"executable": [
+			"yii"
+		]
+	}
+}
