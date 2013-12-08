@@ -4,6 +4,7 @@
     "description": "Demo App presenting niix and edatatables packages",
 	"homepage": "http://demo2.niix.pl/",
 	"license": "BSD-3-Clause",
+	"minimum-stability": "dev",
 	"repositories": [
 		{
 			"type": "vcs",
