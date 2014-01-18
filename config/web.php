@@ -13,9 +13,16 @@ $config = [
 	'modules' => [
 		'usr' => [
 			'class' => 'nineinchnick\usr\Module',
+			'captcha' => true,
+			'oneTimePasswordMode' => 'time',
+			'passwordTimeout' => 1,
 		],
 	],
 	'components' => [
+		 'session' => [
+			'class' => 'yii\web\DbSession',
+			'sessionTable' => '{{%session}}',
+		],
 		'request' => [
 			'enableCsrfValidation' => true,
 		],
@@ -58,7 +65,7 @@ $config = [
 			'dsn' => 'sqlite:'.dirname(__FILE__).'/../data/database.db',
 			'tablePrefix' => '',
 			'charset' => 'utf8',
-			'on '.yii\db\Connection::EVENT_AFTER_OPEN => function(){Yii::$app->db->createCommand('PRAGMA foreign_keys = ON')->execute();},
+			'on '.yii\db\Connection::EVENT_AFTER_OPEN => function($event){$event->sender->createCommand('PRAGMA foreign_keys = ON')->execute();},
 		],
 		'urlManager' => [
 			'enablePrettyUrl' => true,
@@ -70,6 +77,9 @@ $config = [
 		'mail' => [
 			'class' => 'yii\swiftmailer\Mailer',
 			'useFileTransport' => YII_DEBUG,
+			'messageConfig' => [
+				'from' => 'admin@demo2.niix.pl',
+			],
 		],
 		'log' => [
 			'traceLevel' => YII_DEBUG ? 3 : 0,

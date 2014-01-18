@@ -6,14 +6,18 @@
 	"license": "BSD-3-Clause",
 	"minimum-stability": "dev",
 	"repositories": [
-		{
-			"type": "vcs",
-			"url": "https://github.com/nineinchnick/yii2-usr"
-		},
-		{
-			"type": "vcs",
-			"url": "https://github.com/nineinchnick/diceware"
-		}
+		   {
+				   "type": "vcs",
+				   "url": "https://github.com/nineinchnick/yii2-usr"
+		   },
+		   {
+				   "type": "vcs",
+				   "url": "https://github.com/nineinchnick/yii2-nfy"
+		   },
+		   {
+				   "type": "vcs",
+				   "url": "https://github.com/nineinchnick/diceware"
+		   }
 	],
 	"require": {
 		"php": ">=5.4.0",
@@ -22,7 +26,10 @@
 		"yiisoft/yii2-bootstrap": "*",
 		"yiisoft/yii2-debug": "*",
 		"yiisoft/yii2-gii": "*",
-		"nineinchnick/yii2-usr": "*"
+		"yiisoft/yii2-redis": "*",
+		"nineinchnick/yii2-usr": "dev-master",
+		"nineinchnick/yii2-nfy": "dev-master",
+        "sonata-project/google-authenticator": "dev-master"
 	},
 	"scripts": {
 		"post-create-project-cmd": [
