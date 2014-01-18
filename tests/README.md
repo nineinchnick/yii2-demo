@@ -1,20 +1,28 @@
 This folder contains various tests for the basic application.
 These tests are developed with [Codeception PHP Testing Framework](http://codeception.com/).
 
-To run the tests, follow these steps:
+After creating the basic application, follow these steps to prepare for the tests:
 
-1. [Install Codeception](http://codeception.com/quickstart) if you do not have it yet.
-2. Create test configuration files based on your environment:
-   - Copy `acceptance.suite.dist.yml` to `acceptance.suite.yml` and customize it;
-   - Copy `functional.suite.dist.yml` to `functional.suite.yml` and customize it;
-   - Copy `unit.suite.dist.yml` to `unit.suite.yml` and customize it.
-3. Switch to the parent folder and run tests:
+1. In the file `_bootstrap.php`, modify the definition of the constant `TEST_ENTRY_URL` so
+   that it points to the correct entry script URL.
+2. Go to the application base directory and build the test suites:
+
+   ```
+   vendor/bin/codecept build
+   ```
+
+Now you can run the tests with the following commands:
 
 ```
-cd ..
-php codecept.phar build    // rebuild test scripts, only need to be run once
-php codecept.phar run      // run all available tests
+# run all available tests
+vendor/bin/codecept run
+# run acceptance tests
+vendor/bin/codecept run acceptance
+# run functional tests
+vendor/bin/codecept run functional
+# run unit tests
+vendor/bin/codecept run unit
 ```
 
 Please refer to [Codeception tutorial](http://codeception.com/docs/01-Introduction) for
-more details about writing acceptance, functional and unit tests.
+more details about writing and running acceptance, functional and unit tests.

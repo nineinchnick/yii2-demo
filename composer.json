@@ -22,19 +22,24 @@
 	"require": {
 		"php": ">=5.4.0",
 		"yiisoft/yii2": "*",
-		"yiisoft/yii2-swiftmailer": "*",
 		"yiisoft/yii2-bootstrap": "*",
-		"yiisoft/yii2-debug": "*",
-		"yiisoft/yii2-gii": "*",
+		"yiisoft/yii2-swiftmailer": "*",
 		"yiisoft/yii2-redis": "*",
 		"nineinchnick/yii2-usr": "dev-master",
 		"nineinchnick/yii2-nfy": "dev-master",
         "sonata-project/google-authenticator": "dev-master"
 	},
+	"require-dev": {
+		"yiisoft/yii2-debug": "*",
+		"yiisoft/yii2-gii": "*"
+	},
 	"scripts": {
 		"post-create-project-cmd": [
 			"yii\\composer\\Installer::setPermission"
 		]
+	},
+	"config": {
+		"process-timeout": 1800
 	},
 	"extra": {
 		"writable": [
