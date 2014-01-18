@@ -1,0 +1,14 @@
+.flag {
+	display: inline-block;
+	background-repeat: no-repeat;
+	line-height: 11px;
+	margin-top: 1px;
+	vertical-align: text-top;
+	width: 16px;
+	height: 11px;
+	background:url(../images/flags.png) no-repeat
+}
+
+.flag.flag-en {background-position: -16px 0}
+.flag.flag-pl {background-position: 0 -11px}
+.flag.flag-ru {background-position: -16px -11px}

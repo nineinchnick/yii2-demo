@@ -91,4 +91,26 @@ class SiteController extends Controller
 	{
 		return $this->render('about');
 	}
+
+	public static function getAvailableLanguages()
+	{
+		return [
+			'pl'=>Yii::t('app','Polish'),
+			'en'=>Yii::t('app','English'),
+		];
+	}
+
+	public static function createMenuItemsUsingCurrentUrl($data, $urlTemplate, $labelTemplate = '{value}')
+	{
+		$url = Yii::$app->request->url;
+		$targetUrl = $url.(strpos($url,'?')===false ? '?' : '');
+		$items = [];
+		foreach($data as $key=>$value) {
+			$items[] = [
+				'label'=>str_replace(['{key}', '{value}'], [$key, $value], $labelTemplate),
+				'url'=>$targetUrl.'&'.str_replace(['{key}', '{value}'], [$key, $value], $urlTemplate).'&returnUrl='.$url,
+			];
+		}
+		return $items;
+	}
 }

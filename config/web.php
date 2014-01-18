@@ -18,6 +18,9 @@ $config = [
 			'passwordTimeout' => 1,
 		],
 	],
+	'as applicationConfig' => [
+		'class' => 'app\components\ApplicationConfigBehavior',
+	],
 	'components' => [
 		 'session' => [
 			'class' => 'yii\web\DbSession',

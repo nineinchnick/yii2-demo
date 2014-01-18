@@ -26,7 +26,7 @@ AppAsset::register($this);
 	<div class="wrap">
 		<?php
 			NavBar::begin([
-				'brandLabel' => 'My Company',
+				'brandLabel' => Yii::$app->name,
 				'brandUrl' => Yii::$app->homeUrl,
 				'options' => [
 					'class' => 'navbar-inverse navbar-fixed-top',
@@ -34,10 +34,16 @@ AppAsset::register($this);
 			]);
 			echo Nav::widget([
 				'options' => ['class' => 'navbar-nav navbar-right'],
+				'encodeLabels'=>false,
 				'items' => [
-					['label' => 'Home', 'url' => ['/site/index']],
-					['label' => 'About', 'url' => ['/site/about']],
-					['label' => 'Contact', 'url' => ['/site/contact']],
+					['label' => Yii::t('app','Home'), 'url' => ['/site/index']],
+					['label' => Yii::t('app','About'), 'url' => ['/site/about']],
+					['label' => Yii::t('app','Contact'), 'url' => ['/site/contact']],
+					[
+						'label'=>'<i class="flag flag-'.Yii::$app->language.'"></i> '.Yii::t('app','Language'),
+						'url'=>'#',
+						'items'=>app\controllers\SiteController::createMenuItemsUsingCurrentUrl(app\controllers\SiteController::getAvailableLanguages(), 'language={key}', '<i class="flag flag-{key}"></i> {value}'),
+					],
 					Yii::$app->user->isGuest ?
 						['label' => 'Login', 'url' => ['/usr/default/login']] :
 						['label' => 'Logout (' . Yii::$app->user->identity->username . ')' ,
