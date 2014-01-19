@@ -32,10 +32,12 @@ AppAsset::register($this);
 					'class' => 'navbar-inverse navbar-fixed-top',
 				],
 			]);
+			$messagesWidget = Yii::createObject(['class'=>'nineinchnick\nfy\widgets\Messages']);
+			$messagesWidget->run();
 			echo Nav::widget([
 				'options' => ['class' => 'navbar-nav navbar-right'],
 				'encodeLabels'=>false,
-				'items' => [
+				'items' => array_merge([
 					['label' => Yii::t('app','Home'), 'url' => ['/site/index']],
 					['label' => Yii::t('app','About'), 'url' => ['/site/about']],
 					['label' => Yii::t('app','Contact'), 'url' => ['/site/contact']],
@@ -45,11 +47,13 @@ AppAsset::register($this);
 						'items'=>app\controllers\SiteController::createMenuItemsUsingCurrentUrl(app\controllers\SiteController::getAvailableLanguages(), 'language={key}', '<i class="flag flag-{key}"></i> {value}'),
 					],
 					Yii::$app->user->isGuest ?
-						['label' => 'Login', 'url' => ['/usr/default/login']] :
-						['label' => 'Logout (' . Yii::$app->user->identity->username . ')' ,
+						['label' => Yii::t('app','Login'), 'url' => ['/usr/default/login']] :
+						['label' => Yii::t('app','Logout').' (' . Yii::$app->user->identity->username . ')' ,
 							'url' => ['/usr/default/logout'],
 							'linkOptions' => ['data-method' => 'post']],
-				],
+				], Yii::$app->user->isGuest ? [] : [
+					$messagesWidget->createMenuItem(),
+				]),
 			]);
 			NavBar::end();
 		?>

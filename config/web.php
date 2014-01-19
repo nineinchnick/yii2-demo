@@ -9,6 +9,7 @@ $config = [
 	'sourceLanguage' => 'en-US',
 	'aliases' => [
 		'@nineinchnick/usr' => '@vendor/nineinchnick/yii2-usr',
+		'@nineinchnick/nfy' => '@vendor/nineinchnick/yii2-nfy',
 	],
 	'modules' => [
 		'usr' => [
@@ -16,6 +17,10 @@ $config = [
 			'captcha' => true,
 			'oneTimePasswordMode' => 'time',
 			'passwordTimeout' => 1,
+		],
+		'nfy' => [
+			'class' => 'nineinchnick\nfy\Module',
+			'queues' => ['mq'],
 		],
 	],
 	'as applicationConfig' => [
@@ -35,6 +40,11 @@ $config = [
 		'user' => [
 			'identityClass' => 'app\models\User',
 			'loginUrl' => ['usr/login'],
+		],
+		'mq' => [
+			'class' => 'nineinchnick\nfy\components\DbQueue',
+			'id' => 'mq',
+			'label' => 'Db Queue',
 		],
 		'errorHandler' => [
 			'errorAction' => 'site/error',
