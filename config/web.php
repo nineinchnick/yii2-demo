@@ -80,6 +80,9 @@ $config = [
 			'charset' => 'utf8',
 			'on '.yii\db\Connection::EVENT_AFTER_OPEN => function($event){$event->sender->createCommand('PRAGMA foreign_keys = ON')->execute();},
 		],
+		'authManager' => [
+			'class' => 'yii\rbac\DbManager',
+		],
 		'urlManager' => [
 			'enablePrettyUrl' => true,
 			'showScriptName' => false,
