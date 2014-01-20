@@ -7,4 +7,8 @@ namespace app\models;
  */
 class User extends \nineinchnick\usr\models\ExampleUser
 {
+	public function __toString()
+	{
+		return $this->firstname.' '.$this->lastname;
+	}
 }

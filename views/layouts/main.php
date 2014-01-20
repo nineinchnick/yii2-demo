@@ -32,7 +32,12 @@ AppAsset::register($this);
 					'class' => 'navbar-inverse navbar-fixed-top',
 				],
 			]);
-			$messagesWidget = Yii::createObject(['class'=>'nineinchnick\nfy\widgets\Messages']);
+			$messagesWidget = Yii::createObject([
+				'class'=>'nineinchnick\nfy\widgets\Messages',
+				'messages' => [
+					'mq' => Yii::$app->mq->peek(Yii::$app->user->getId())
+				],
+			]);
 			$messagesWidget->run();
 			echo Nav::widget([
 				'options' => ['class' => 'navbar-nav navbar-right'],
