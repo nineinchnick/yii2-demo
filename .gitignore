@@ -3,3 +3,4 @@ runtime/
 data/
 vendor/
 composer.lock
+composer.phar
