@@ -17,6 +17,9 @@ $config = [
 			'captcha' => true,
 			'oneTimePasswordMode' => 'time',
 			'passwordTimeout' => 1,
+			'pictureUploadRules' => [
+				['file', 'skipOnEmpty' => true, 'types'=>'jpg, gif, png', 'maxSize'=>2*1024*1024, 'maxFiles' => 1],
+			],
 		],
 		'nfy' => [
 			'class' => 'nineinchnick\nfy\Module',
