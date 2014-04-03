@@ -8,55 +8,56 @@ use app\models\User;
 
 class LoginFormTest extends TestCase
 {
-	
-	use \Codeception\Specify;
 
-	public function testLoginNoUser()
-	{
-		$model = $this->mockUser(null);
+    use \Codeception\Specify;
 
-		$model->username = 'some_username';
-		$model->password = 'some_password';
+    public function testLoginNoUser()
+    {
+        $model = $this->mockUser(null);
 
-		$this->specify('user should not be able to login, when there is no identity' , function () use ($model) {
-			$this->assertFalse($model->login());
-			$this->assertTrue(Yii::$app->user->isGuest,'user should not be logged in');
-		});
-	}
+        $model->username = 'some_username';
+        $model->password = 'some_password';
 
-	public function testLoginWrongPassword()
-	{
-		$model = $this->mockUser(new User);
+        $this->specify('user should not be able to login, when there is no identity' , function () use ($model) {
+            $this->assertFalse($model->login());
+            $this->assertTrue(Yii::$app->user->isGuest,'user should not be logged in');
+        });
+    }
 
-		$model->username = 'demo';
-		$model->password = 'wrong-password';
+    public function testLoginWrongPassword()
+    {
+        $model = $this->mockUser(new User);
 
-		$this->specify('user should not be able to login with wrong password', function () use ($model) {
-			$this->assertFalse($model->login());
-			$this->assertArrayHasKey('password',$model->errors);
-			$this->assertTrue(Yii::$app->user->isGuest,'user should not be logged in');
-		});
-	}
+        $model->username = 'demo';
+        $model->password = 'wrong-password';
 
-	public function testLoginCorrect()
-	{
-		$model = $this->mockUser(new User(['password' => 'demo']));
+        $this->specify('user should not be able to login with wrong password', function () use ($model) {
+            $this->assertFalse($model->login());
+            $this->assertArrayHasKey('password',$model->errors);
+            $this->assertTrue(Yii::$app->user->isGuest,'user should not be logged in');
+        });
+    }
 
-		$model->username = 'demo';
-		$model->password = 'demo';
+    public function testLoginCorrect()
+    {
+        $model = $this->mockUser(new User(['password' => 'demo']));
 
-		$this->specify('user should be able to login with correct credentials', function() use ($model) {
-			$this->assertTrue($model->login());
-			$this->assertArrayNotHasKey('password',$model->errors);
-			$this->assertFalse(Yii::$app->user->isGuest,'user should be logged in');
-		});
-	}
+        $model->username = 'demo';
+        $model->password = 'demo';
 
-	private function mockUser($user)
-	{
-		$loginForm = $this->getMock('app\models\LoginForm',['getUser']);
-		$loginForm->expects($this->any())->method('getUser')->will($this->returnValue($user));
-		return $loginForm;
-	}
+        $this->specify('user should be able to login with correct credentials', function () use ($model) {
+            $this->assertTrue($model->login());
+            $this->assertArrayNotHasKey('password',$model->errors);
+            $this->assertFalse(Yii::$app->user->isGuest,'user should be logged in');
+        });
+    }
+
+    private function mockUser($user)
+    {
+        $loginForm = $this->getMock('app\models\LoginForm',['getUser']);
+        $loginForm->expects($this->any())->method('getUser')->will($this->returnValue($user));
+
+        return $loginForm;
+    }
 
 }

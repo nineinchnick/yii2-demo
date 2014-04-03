@@ -2,15 +2,14 @@
 
 namespace app\modules\usr;
 
-
 class Module extends \yii\base\Module
 {
-	public $controllerNamespace = 'app\modules\usr\controllers';
+    public $controllerNamespace = 'app\modules\usr\controllers';
 
-	public function init()
-	{
-		parent::init();
+    public function init()
+    {
+        parent::init();
 
-		// custom initialization code goes here
-	}
+        // custom initialization code goes here
+    }
 }

@@ -7,14 +7,14 @@ use yii\test\DbTestTrait;
 
 class UserTest extends TestCase
 {
-	use DbTestTrait;
+    use DbTestTrait;
 
-	protected function setUp()
-	{
-		parent::setUp();
-		// uncomment the following to load fixtures for table tbl_user
-		//$this->loadFixtures(['tbl_user']);
-	}
+    protected function setUp()
+    {
+        parent::setUp();
+        // uncomment the following to load fixtures for table tbl_user
+        //$this->loadFixtures(['tbl_user']);
+    }
 
-	// TODO add test methods here
+    // TODO add test methods here
 }
