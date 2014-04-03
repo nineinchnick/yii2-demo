@@ -15,10 +15,10 @@ AppAsset::register($this);
 <!DOCTYPE html>
 <html lang="<?= Yii::$app->language ?>">
 <head>
-	<meta charset="<?= Yii::$app->charset ?>"/>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title><?= Html::encode($this->title) ?></title>
-	<?php $this->head() ?>
+    <meta charset="<?= Yii::$app->charset ?>"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><?= Html::encode($this->title) ?></title>
+    <?php $this->head() ?>
 </head>
 <body>
 
@@ -35,7 +35,8 @@ AppAsset::register($this);
 			$messagesWidget = Yii::createObject([
 				'class'=>'nineinchnick\nfy\widgets\Messages',
 				'messages' => [
-					'mq' => Yii::$app->mq->peek(Yii::$app->user->getId())
+					'dbmq' => Yii::$app->dbmq->peek(Yii::$app->user->getId()),
+					'rmq' => Yii::$app->rmq->peek(Yii::$app->user->getId()),
 				],
 			]);
 			$messagesWidget->run();
@@ -63,20 +64,20 @@ AppAsset::register($this);
 			NavBar::end();
 		?>
 
-		<div class="container">
-			<?= Breadcrumbs::widget([
-				'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-			]) ?>
-			<?= $content ?>
-		</div>
-	</div>
+        <div class="container">
+            <?= Breadcrumbs::widget([
+                'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+            ]) ?>
+            <?= $content ?>
+        </div>
+    </div>
 
-	<footer class="footer">
-		<div class="container">
-			<p class="pull-left">&copy; My Company <?= date('Y') ?></p>
-			<p class="pull-right"><?= Yii::powered() ?></p>
-		</div>
-	</footer>
+    <footer class="footer">
+        <div class="container">
+            <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
+            <p class="pull-right"><?= Yii::powered() ?></p>
+        </div>
+    </footer>
 
 <?php $this->endBody() ?>
 </body>

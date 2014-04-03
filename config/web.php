@@ -1,5 +1,8 @@
 <?php
+
 $params = require(__DIR__ . '/params.php');
+$db = require(__DIR__ . '/db.php');
+
 $config = [
 	'id' => 'basic',
 	'name' => 'Basic',
@@ -23,7 +26,7 @@ $config = [
 		],
 		'nfy' => [
 			'class' => 'nineinchnick\nfy\Module',
-			'queues' => ['mq'],
+			'queues' => ['dbmq','rmq'],
 		],
 	],
 	'as applicationConfig' => [
@@ -42,12 +45,23 @@ $config = [
 		],
 		'user' => [
 			'identityClass' => 'app\models\User',
+            'enableAutoLogin' => true,
 			'loginUrl' => ['usr/login'],
 		],
-		'mq' => [
+		'dbmq' => [
 			'class' => 'nineinchnick\nfy\components\DbQueue',
-			'id' => 'mq',
+			'id' => 'dbmq',
 			'label' => 'Db Queue',
+		],
+		'rmq' => [
+			'class' => 'nineinchnick\nfy\components\RedisQueue',
+			'id' => 'rmq',
+			'label' => 'Redis Queue',
+		],
+		'smq' => [
+			'class' => 'nineinchnick\nfy\components\SysVQueue',
+			'id' => 'a',
+			'label' => 'SysV Queue',
 		],
 		'errorHandler' => [
 			'errorAction' => 'site/error',
@@ -68,20 +82,9 @@ $config = [
 			'decimalSeparator' => ',',
 			'thousandSeparator' => ' ',
 		],
-		'db' => [
-			/*'class' => 'yii\db\Connection',
-			'dsn'	=> 'pgsql:host=localhost;dbname=',
-			'username'			=> '',
-			'password'			=> '',
-			'tablePrefix' => 'c_',
-			'charset' => 'utf8',*/
-			/*'on '.yii\db\Connection::EVENT_AFTER_OPEN => function(){Yii::$app->db->createCommand('SET search_path TO bank,public')->execute();},*/
-
-			'class' => 'yii\db\Connection',
-			'dsn' => 'sqlite:'.dirname(__FILE__).'/../data/database.db',
-			'tablePrefix' => '',
-			'charset' => 'utf8',
-			'on '.yii\db\Connection::EVENT_AFTER_OPEN => function($event){$event->sender->createCommand('PRAGMA foreign_keys = ON')->execute();},
+		'db' => $db,
+		'redis' => [
+			'class' => 'yii\redis\Connection',
 		],
 		'authManager' => [
 			'class' => 'yii\rbac\DbManager',
@@ -105,7 +108,7 @@ $config = [
 			'targets' => [
 				[
 					'class' => 'yii\log\FileTarget',
-					'levels' => ['error', 'warning'],
+					'levels' => ['profile', 'trace', 'error', 'warning', 'info'],
 				],
 			],
 		],
