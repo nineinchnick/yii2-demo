@@ -16,6 +16,7 @@ Thumbs.db
 /vendor
 /runtime
 /web/assets
+/data
 
 # composer itself is not needed
 composer.phar
