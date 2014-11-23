@@ -7,6 +7,7 @@ $config = [
     'id' => 'basic',
     'name' => 'Basic',
     'basePath' => dirname(__DIR__),
+    'bootstrap' => ['log'],
     'extensions' => require(__DIR__ . '/../vendor/yiisoft/extensions.php'),
     'language' => 'pl',
     'sourceLanguage' => 'en-US',
@@ -39,6 +40,8 @@ $config = [
         ],
         'request' => [
             'enableCsrfValidation' => true,
+            // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
+            'cookieValidationKey' => 'CNsW2fQRoOgyYWSkFDY1uDfxpiPvbC01',
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
@@ -117,8 +120,11 @@ $config = [
 ];
 
 if (YII_ENV_DEV) {
-    $config['preload'][] = 'debug';
+    // configuration adjustments for 'dev' environment
+    $config['bootstrap'][] = 'debug';
     $config['modules']['debug'] = 'yii\debug\Module';
+
+    $config['bootstrap'][] = 'gii';
     $config['modules']['gii'] = 'yii\gii\Module';
 }
 
