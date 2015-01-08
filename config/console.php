@@ -8,7 +8,7 @@ $db = require(__DIR__ . '/db.php');
 return [
     'id' => 'basic-console',
     'basePath' => dirname(__DIR__),
-    'bootstrap' => ['log', 'gii'],
+    'bootstrap' => ['log', 'gii', 'usr'],
 //	'controllerPath' => dirname(__DIR__) . '/commands',
     'controllerNamespace' => 'app\commands',
     'extensions' => require(__DIR__ . '/../vendor/yiisoft/extensions.php'),
@@ -18,9 +18,18 @@ return [
     ],
     'modules' => [
         'gii' => 'yii\gii\Module',
+        'usr' => [
+            'class' => 'nineinchnick\usr\Module',
+            'captcha' => true,
+            'oneTimePasswordMode' => 'time',
+            'passwordTimeout' => 1,
+            'pictureUploadRules' => [
+                ['file', 'skipOnEmpty' => true, 'extensions'=>'jpg, gif, png', 'maxSize'=>2*1024*1024, 'maxFiles' => 1],
+            ],
+        ],
         'nfy' => [
             'class' => 'nineinchnick\nfy\Module',
-            'queues' => ['mq'],
+            'queues' => ['dbmq', 'rmq'],
         ],
     ],
     'components' => [
@@ -31,6 +40,13 @@ return [
             'class' => 'yii\caching\FileCache',
         ],
         'db' => $db,
+        'mail' => [
+            'class' => 'yii\swiftmailer\Mailer',
+            'useFileTransport' => YII_DEBUG,
+            'messageConfig' => [
+                'from' => 'admin@demo2.niix.pl',
+            ],
+        ],
         'log' => [
             'targets' => [
                 [

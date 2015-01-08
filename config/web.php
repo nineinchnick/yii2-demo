@@ -22,7 +22,7 @@ $config = [
             'oneTimePasswordMode' => 'time',
             'passwordTimeout' => 1,
             'pictureUploadRules' => [
-                ['file', 'skipOnEmpty' => true, 'types'=>'jpg, gif, png', 'maxSize'=>2*1024*1024, 'maxFiles' => 1],
+                ['file', 'skipOnEmpty' => true, 'extensions'=>'jpg, gif, png', 'maxSize'=>2*1024*1024, 'maxFiles' => 1],
             ],
         ],
         'nfy' => [
