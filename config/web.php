@@ -79,9 +79,9 @@ $config = [
             ],
         ],
         'formatter' => [
-            'dateFormat' => 'Y-m-d',
-            'timeFormat' => 'H:i:s',
-            'datetimeFormat' => 'Y-m-d H:i:s',
+            'dateFormat' => 'php:Y-m-d',
+            'timeFormat' => 'php:H:i:s',
+            'datetimeFormat' => 'php:Y-m-d H:i:s',
             'decimalSeparator' => ',',
             'thousandSeparator' => ' ',
         ],
