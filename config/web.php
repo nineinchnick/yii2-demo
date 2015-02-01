@@ -19,8 +19,16 @@ $config = [
         'usr' => [
             'class' => 'nineinchnick\usr\Module',
             'captcha' => true,
-            'oneTimePasswordMode' => 'time',
-            'passwordTimeout' => 1,
+            'loginFormBehaviors' => [
+                'oneTimePasswordBehavior' => [
+                    'class' => '\nineinchnick\usr\components\OneTimePasswordFormBehavior',
+                    'mode' => 'time',
+                ],
+                'expiredPasswordBehavior' => [
+                    'class' => '\nineinchnick\usr\components\ExpiredPasswordBehavior',
+                    'passwordTimeout' => 1,
+                ],
+            ],
             'pictureUploadRules' => [
                 ['file', 'skipOnEmpty' => true, 'extensions'=>'jpg, gif, png', 'maxSize'=>2*1024*1024, 'maxFiles' => 1],
             ],
@@ -96,7 +104,7 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-                'usr/<action:(login|logout|reset|recovery|register|profile|password)>'=>'usr/default/<action>',
+                'usr/<action:(login|logout|reset|recovery|register|profile|profile-picture|password)>'=>'usr/default/<action>',
             ],
         ],
         'mail' => [
