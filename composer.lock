@@ -404,12 +404,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nineinchnick/yii2-usr.git",
-                "reference": "9b61f6cc1a1c53ff2ea370c029188f1767ba192a"
+                "reference": "1fc442af2e01d1f4da5c2c5a01d655b20cbe7b21"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nineinchnick/yii2-usr/zipball/9b61f6cc1a1c53ff2ea370c029188f1767ba192a",
-                "reference": "9b61f6cc1a1c53ff2ea370c029188f1767ba192a",
+                "url": "https://api.github.com/repos/nineinchnick/yii2-usr/zipball/1fc442af2e01d1f4da5c2c5a01d655b20cbe7b21",
+                "reference": "1fc442af2e01d1f4da5c2c5a01d655b20cbe7b21",
                 "shasum": ""
             },
             "require": {
@@ -446,7 +446,7 @@
                 "source": "https://github.com/nineinchnick/yii2-usr/tree/master",
                 "issues": "https://github.com/nineinchnick/yii2-usr/issues"
             },
-            "time": "2015-02-03 21:00:45"
+            "time": "2015-02-03 21:10:59"
         },
         {
             "name": "sonata-project/google-authenticator",
