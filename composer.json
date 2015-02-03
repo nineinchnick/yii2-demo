@@ -25,9 +25,10 @@
 		"yiisoft/yii2-bootstrap": "*",
 		"yiisoft/yii2-swiftmailer": "*",
 		"yiisoft/yii2-redis": "*",
+		"yiisoft/yii2-authclient": "*",
 		"nineinchnick/yii2-usr": "dev-master",
 		"nineinchnick/yii2-nfy": "dev-master",
-                "sonata-project/google-authenticator": "dev-master"
+        "sonata-project/google-authenticator": "dev-master"
 	},
 	"require-dev": {
 		"yiisoft/yii2-codeception": "*",

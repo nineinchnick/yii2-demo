@@ -42,7 +42,7 @@ $config = [
         'class' => 'app\components\ApplicationConfigBehavior',
     ],
     'components' => [
-         'session' => [
+        'session' => [
             'class' => 'yii\web\DbSession',
             'sessionTable' => '{{%session}}',
         ],
@@ -54,10 +54,27 @@ $config = [
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
+        'authManager' => [
+            'class' => 'yii\rbac\DbManager',
+        ],
         'user' => [
             'identityClass' => 'app\models\User',
             'enableAutoLogin' => true,
             'loginUrl' => ['usr/login'],
+        ],
+        'authClientCollection' => [
+            'class' => 'yii\authclient\Collection',
+            'clients' => [
+                'google' => [
+                    'class' => 'yii\authclient\clients\GoogleOpenId'
+                ],
+                'facebook' => [
+                    'class' => 'yii\authclient\clients\Facebook',
+                    'authUrl' => 'https://www.facebook.com/dialog/oauth?display=popup',
+                    'clientId' => 'facebook_client_id',
+                    'clientSecret' => 'facebook_client_secret',
+                ],
+            ],
         ],
         'dbmq' => [
             'class' => 'nineinchnick\nfy\components\DbQueue',
@@ -96,9 +113,6 @@ $config = [
         'db' => $db,
         'redis' => [
             'class' => 'yii\redis\Connection',
-        ],
-        'authManager' => [
-            'class' => 'yii\rbac\DbManager',
         ],
         'urlManager' => [
             'enablePrettyUrl' => true,

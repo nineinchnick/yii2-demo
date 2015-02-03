@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f4406835ad1eb3be69aacf583d36bcd5",
+    "hash": "821d54c281ceb1b12fa5e03329b27133",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -102,16 +102,16 @@
         },
         {
             "name": "bower-asset/jquery.inputmask",
-            "version": "3.1.59",
+            "version": "3.1.60",
             "source": {
                 "type": "git",
                 "url": "https://github.com/RobinHerbots/jquery.inputmask.git",
-                "reference": "6fcd2cf28ee111f8aadcd42a1b8d43d6f7a5c0ba"
+                "reference": "da0a365b45b3040219a83c5abb5fcd3a51d7ed89"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/RobinHerbots/jquery.inputmask/zipball/6fcd2cf28ee111f8aadcd42a1b8d43d6f7a5c0ba",
-                "reference": "6fcd2cf28ee111f8aadcd42a1b8d43d6f7a5c0ba",
+                "url": "https://api.github.com/repos/RobinHerbots/jquery.inputmask/zipball/da0a365b45b3040219a83c5abb5fcd3a51d7ed89",
+                "reference": "da0a365b45b3040219a83c5abb5fcd3a51d7ed89",
                 "shasum": ""
             },
             "require": {
@@ -404,12 +404,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nineinchnick/yii2-usr.git",
-                "reference": "e63da6f9681ea66c9f4be872922534688490dd97"
+                "reference": "04b1bf268b4424ba28002e65510e267d3d885d44"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nineinchnick/yii2-usr/zipball/e63da6f9681ea66c9f4be872922534688490dd97",
-                "reference": "e63da6f9681ea66c9f4be872922534688490dd97",
+                "url": "https://api.github.com/repos/nineinchnick/yii2-usr/zipball/04b1bf268b4424ba28002e65510e267d3d885d44",
+                "reference": "04b1bf268b4424ba28002e65510e267d3d885d44",
                 "shasum": ""
             },
             "require": {
@@ -422,8 +422,8 @@
                 "phpunit/phpunit": "3.8.*"
             },
             "suggest": {
-                "hybridauth/hybridauth": "Support for Hybridauth for logging using social site identities.",
-                "sonata-project/google-authenticator": "Support for Google Authenticator for two step authentication using one time passwords."
+                "sonata-project/google-authenticator": "Support for Google Authenticator for two step authentication using one time passwords.",
+                "yiisoft/yii2-authclient": "Support for OAuth for logging using social site identities."
             },
             "type": "yii2-module",
             "autoload": {
@@ -446,7 +446,7 @@
                 "source": "https://github.com/nineinchnick/yii2-usr/tree/master",
                 "issues": "https://github.com/nineinchnick/yii2-usr/issues"
             },
-            "time": "2015-02-01 19:28:50"
+            "time": "2015-02-03 20:26:10"
         },
         {
             "name": "sonata-project/google-authenticator",
@@ -637,6 +637,54 @@
                 "yii2"
             ],
             "time": "2014-12-07 16:42:41"
+        },
+        {
+            "name": "yiisoft/yii2-authclient",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yiisoft/yii2-authclient.git",
+                "reference": "60475bb28d3d02e7fe6f64551cc4f583bac57da5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/yiisoft/yii2-authclient/zipball/60475bb28d3d02e7fe6f64551cc4f583bac57da5",
+                "reference": "60475bb28d3d02e7fe6f64551cc4f583bac57da5",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "yiisoft/yii2": "*"
+            },
+            "type": "yii2-extension",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "yii\\authclient\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Paul Klimov",
+                    "email": "klimov.paul@gmail.com"
+                }
+            ],
+            "description": "External authentication via OAuth and OpenID for the Yii framework",
+            "keywords": [
+                "OpenId",
+                "auth",
+                "oauth",
+                "yii2"
+            ],
+            "time": "2015-01-15 21:01:28"
         },
         {
             "name": "yiisoft/yii2-bootstrap",

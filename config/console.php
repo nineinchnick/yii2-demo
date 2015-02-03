@@ -21,8 +21,16 @@ return [
         'usr' => [
             'class' => 'nineinchnick\usr\Module',
             'captcha' => true,
-            'oneTimePasswordMode' => 'time',
-            'passwordTimeout' => 1,
+            'loginFormBehaviors' => [
+                'oneTimePasswordBehavior' => [
+                    'class' => '\nineinchnick\usr\components\OneTimePasswordFormBehavior',
+                    'mode' => 'time',
+                ],
+                'expiredPasswordBehavior' => [
+                    'class' => '\nineinchnick\usr\components\ExpiredPasswordBehavior',
+                    'passwordTimeout' => 1,
+                ],
+            ],
             'pictureUploadRules' => [
                 ['file', 'skipOnEmpty' => true, 'extensions'=>'jpg, gif, png', 'maxSize'=>2*1024*1024, 'maxFiles' => 1],
             ],
